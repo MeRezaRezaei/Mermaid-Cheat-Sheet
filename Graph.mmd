@@ -19,3 +19,24 @@ graph TD
     A -->|No| C
 
     B -->|Go to Website| https://example.com
+
+    %% Explanation of the graph:
+    %% 1. The graph direction is 'TD' (Top Down).
+    %% 2. Nodes are connected using different types of edges:
+    %%    - '-->' for normal arrows (e.g., A --> B)
+    %%    - '==>' for thicker arrows (e.g., B ==> C)
+    %%    - '--->' for dashed arrows (e.g., C ---> D)
+    %%    - '-.->' for dotted arrows (e.g., D -.-> E)
+    %%    - '---' for dashed lines (e.g., E --- F)
+    %%    - '-->' with a label for labeled arrows (e.g., F -->|Label| G)
+    %%    - '<-->' for bidirectional arrows (e.g., G <--> H)
+    %%
+    %% 3. The 'subgraph' keyword is used to group nodes A and B together in 'Group1'.
+    %% 4. Conditional edges are shown as 'Yes' and 'No' options from node A:
+    %%    - A -->|Yes| B
+    %%    - A -->|No| C
+    %%
+    %% 5. The graph contains an external link:
+    %%    - B -->|Go to Website| https://example.com
+    %%
+    %% 6. The class 'green' is applied to node A, changing its appearance.
