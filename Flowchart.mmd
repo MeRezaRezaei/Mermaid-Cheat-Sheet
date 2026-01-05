@@ -1,4 +1,4 @@
-%%{init: {"theme": "dark", "flowchart": {"htmlLabels": true, "curve": "basis"}} }%%
+%%{init: {"theme": "neutral", "flowchart": {"htmlLabels": true, "curve": "basis"}} }%%
 flowchart TB
 
     %% =================================================================================
@@ -34,18 +34,27 @@ flowchart TB
     end
 
     %% =================================================================================
-    %% 3. LINKS
+    %% 3. LINKS & ARROWS
     %% =================================================================================
-    subgraph Links ["3. Link Styles & Arrows"]
+    subgraph Links ["3. Link Styles & Advanced Syntax"]
         direction LR
         L1(A) --- L2(Solid)
         L3(B) -.- L4(Dotted)
         L5(C) === L6(Thick)
+        
+        %% Arrow Types
         A1(D) --> A2(Arrow)
         A3(E) --o A4(Circle)
-        A5(F) <--> A6(Multi)
-        TX1(G) -- "Inline Label" --> TX2(H)
-        TX3(I) -->|Pipe Label| TX4(J)
+        A5(F) --x A6(Cross)
+        A7(G) <--> A8(Bi-Directional)
+        
+        %% Labels
+        TX1(I) -- "Inline Label" --> TX2(J)
+        TX3(K) -->|Pipe Label| TX4(L)
+        
+        %% Advanced: Multi-Node & Lengths
+        M1(Start) --> M2(A) & M3(B) --> M4(End)
+        LEN1(Near) --> LEN2(Far) ---> LEN3(Very Far)
     end
 
     %% =================================================================================
@@ -70,7 +79,7 @@ flowchart TB
         I1[Click Me - Tooltip]
         click I1 "https://mermaid.js.org" "Tooltip Text"
         
-        I2["Markdown: **Bold**"]
+        I2["Markdown: **Bold** & *Italic*"]
         I3["Escape: #quot;Quote#quot;"]
         I4[fa:fa-car Icon]
     end
@@ -92,7 +101,7 @@ flowchart TB
         end
     end
 
-    %% Column Layout
+    %% Column Layout Helpers
     Directions ~~~ Shapes
     Shapes ~~~ Links
     Links ~~~ Styling
