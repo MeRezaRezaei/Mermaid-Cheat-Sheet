@@ -1,27 +1,30 @@
 erDiagram
+    %% Entities
     CUSTOMER {
-        string customerID
+        int customerID PK
         string name
         string email
         string address
     }
 
     ORDER {
-        int orderID
+        int orderID PK
         date orderDate
         string status
+        int customerID FK
     }
 
     PRODUCT {
-        int productID
-        string name
+        int productID PK
+        string productName
         float price
     }
 
     PAYMENT {
-        int paymentID
+        int paymentID PK
         float amount
         date paymentDate
+        int orderID FK
         string paymentMethod
     }
 
@@ -29,3 +32,11 @@ erDiagram
     CUSTOMER ||--o| ORDER : "places"
     ORDER ||--|{ PRODUCT : "contains"
     ORDER ||--o| PAYMENT : "paid by"
+    PRODUCT ||--o| SUPPLIER : "supplied by"
+
+    %% Inheritance
+    EMPLOYEE |-- MANAGER : "is a"
+    
+    %% Many-to-Many Relationship Example (via Junction Entity)
+    STUDENT ||--o| COURSE : "enrolled in"
+    COURSE ||--o| STUDENT : "has"
