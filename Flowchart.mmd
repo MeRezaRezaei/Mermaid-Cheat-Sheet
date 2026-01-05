@@ -1,12 +1,12 @@
 %%{init: {'flowchart': {'curve': 'basis'}}}%%
 flowchart LR
-    %% --- Section 1: New Syntax & Icons ---
+    %% --- Section 1: New Syntax & Icons (GitHub Safe) ---
     
     %% Node with FontAwesome icon
     Admin@{ icon: "fa:user-secret", label: "**Super** Admin", pos: "b"}
     
-    %% Node with real image
-    Logo@{ img: "favicon.svg", w: 40, h: 40, constraint: "on" }
+    %% FIXED: Replaced external image with an internal icon for GitHub compatibility
+    Logo@{ icon: "fa:brands fa-github-alt", label: "System Logo", pos: "b" }
 
     %% New shapes: Manual Input and Card
     InputForm@{ shape: manual-input, label: "`User
@@ -17,7 +17,7 @@ flowchart LR
     %% Connections for Section 1
     Admin -- Login --> InputForm
     
-    %% Invisible link for layout adjustment (Comment moved to separate line)
+    %% Invisible link for layout adjustment
     Logo ~~~ Admin
 
     %% --- Section 2: Subgraphs & Direction ---
@@ -37,7 +37,7 @@ flowchart LR
     %% Cloud shape
     Internet@{ shape: cloud, label: "Public Network" }
     
-    %% Animated Edge - New Feature!
+    %% Animated Edge
     FrontEnd edge1@==> Internet
     edge1@{ animate: true, animation: fast }
 
@@ -68,7 +68,7 @@ flowchart LR
 
     %% --- Section 6: Interaction & CSS Classes ---
     
-    %% Clickable Node (Opens URL)
+    %% Clickable Node (Opens URL - usually works on GitHub)
     click Admin "https://github.com" "View Admin Profile"
 
     %% Define CSS classes
@@ -81,6 +81,8 @@ flowchart LR
 
     %% Style specific link
     linkStyle 0 stroke:green,stroke-width:2px;
+
+
     %% Explanation of the flowchart:
     %% 1. The flowchart direction is 'TD' (Top Down).
     %% 2. Nodes represent specific steps in a process (e.g., Start, Do something, Finish).
