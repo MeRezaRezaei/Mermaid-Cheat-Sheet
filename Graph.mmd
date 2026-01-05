@@ -1,0 +1,34 @@
+graph TD
+    %% Nodes (Entities)
+    A[Customer] 
+    B[Order]
+    C[Product]
+    D[Employee]
+    E[Payment]
+    F[Shipment]
+    G[Supplier]
+    H[Order Item]
+    
+    %% Relationships (Edges)
+    A -->|Places| B
+    B -->|Contains| H
+    H -->|References| C
+    B -->|Has| E
+    B -->|Shipped By| F
+    D -->|Processes| B
+    C -->|Supplied By| G
+    F -->|Contains| G
+    E -->|Paid By| A
+    G -->|Managed By| D
+
+    %% Descriptions
+    %% "Places" - A customer places multiple orders (One-to-many relationship)
+    %% "Contains" - An order contains multiple order items (One-to-many relationship)
+    %% "References" - An order item references a specific product (Many-to-one relationship)
+    %% "Has" - An order has one associated payment (One-to-one relationship)
+    %% "Shipped By" - An order is shipped by one shipment (One-to-one relationship)
+    %% "Processes" - An employee processes multiple orders (One-to-many relationship)
+    %% "Supplied By" - A product is supplied by one supplier (Many-to-one relationship)
+    %% "Contains" - A shipment can contain multiple products supplied by a supplier (One-to-many relationship)
+    %% "Paid By" - A payment is made by a customer (One-to-one relationship)
+    %% "Managed By" - A supplier is managed by one employee (One-to-one relationship)
