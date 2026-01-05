@@ -10,16 +10,6 @@ graph TD
     F -->|Label| G
     G <--> H
 
-    subgraph Group1
-        A
-        B
-    end
-
-    A -->|Yes| B
-    A -->|No| C
-
-    B -->|Go to Website| https://example.com
-
     %% Explanation of the graph:
     %% 1. The graph direction is 'TD' (Top Down).
     %% 2. Nodes are connected using different types of edges:
@@ -32,11 +22,5 @@ graph TD
     %%    - '<-->' for bidirectional arrows (e.g., G <--> H)
     %%
     %% 3. The 'subgraph' keyword is used to group nodes A and B together in 'Group1'.
-    %% 4. Conditional edges are shown as 'Yes' and 'No' options from node A:
-    %%    - A -->|Yes| B
-    %%    - A -->|No| C
-    %%
-    %% 5. The graph contains an external link:
-    %%    - B -->|Go to Website| https://example.com
-    %%
-    %% 6. The class 'green' is applied to node A, changing its appearance.
+    %% 4. The graph can represent more complex structures with multiple connections and bidirectional relationships.
+    %% 5. There are no strict flow paths. This is more of a network or relationship diagram.
