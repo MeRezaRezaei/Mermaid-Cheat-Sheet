@@ -1,42 +1,66 @@
 erDiagram
-    %% Entities
     CUSTOMER {
-        int customerID PK
+        string customerID
         string name
-        string email
         string address
+        string email
+        string phone
     }
-
+    
     ORDER {
-        int orderID PK
+        int orderID
         date orderDate
         string status
-        int customerID FK
+        float totalAmount
     }
-
+    
     PRODUCT {
-        int productID PK
+        int productID
         string productName
         float price
+        string category
+    }
+    
+    EMPLOYEE {
+        string employeeID
+        string firstName
+        string lastName
+        string position
     }
 
     PAYMENT {
-        int paymentID PK
-        float amount
+        int paymentID
         date paymentDate
-        int orderID FK
+        float amount
         string paymentMethod
     }
 
-    %% Relationships
-    CUSTOMER ||--o| ORDER : "places"
-    ORDER ||--|{ PRODUCT : "contains"
-    ORDER ||--o| PAYMENT : "paid by"
-    PRODUCT ||--o| SUPPLIER : "supplied by"
+    SHIPMENT {
+        int shipmentID
+        date shipmentDate
+        string carrier
+        string trackingNumber
+    }
 
-    %% Inheritance
-    EMPLOYEE |-- MANAGER : "is a"
-    
-    %% Many-to-Many Relationship Example (via Junction Entity)
-    STUDENT ||--o| COURSE : "enrolled in"
-    COURSE ||--o| STUDENT : "has"
+    SUPPLIER {
+        int supplierID
+        string supplierName
+        string contactPerson
+        string phone
+    }
+
+    ORDER_ITEM {
+        int quantity
+        float itemPrice
+    }
+
+    CUSTOMER ||--o| ORDER : places
+    ORDER ||--|{ ORDER_ITEM : contains
+    ORDER_ITEM ||--o| PRODUCT : references
+    ORDER ||--o| PAYMENT : has
+    ORDER ||--o| SHIPMENT : shippedBy
+    EMPLOYEE ||--o| ORDER : processes
+    PRODUCT ||--o| SUPPLIER : suppliedBy
+    SHIPMENT ||--|{ SUPPLIER : contains
+    PAYMENT ||--o| CUSTOMER : paidBy
+    SUPPLIER ||--o| EMPLOYEE : managedBy
