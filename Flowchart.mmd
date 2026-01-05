@@ -1,0 +1,22 @@
+flowchart TD
+    A[Start] --> B[Do something]
+    B --> C{Is it good?}
+    C -->|Yes| D[Continue]
+    C -->|No| E[Fix it]
+    E --> B
+    D --> F[Finish]
+    F --> G[End]
+
+    %% Explanation of the flowchart:
+    %% 1. The flowchart direction is 'TD' (Top Down).
+    %% 2. Nodes represent specific steps in a process (e.g., Start, Do something, Finish).
+    %% 3. The diamond shape (C) represents a decision point with two possible outcomes: 'Yes' and 'No'.
+    %% 4. The edges ('-->' and '|Label|') indicate the flow between steps and conditions in the process.
+    %% 5. Flowcharts are ideal for representing linear or branching processes with clear decision points.
+    %% 6. The flowchart has a clear direction and defines steps in a specific sequence.
+    %% 7. Unlike graphs, flowcharts are designed for step-by-step process visualization and decision-making.
+
+    %% Key differences with graphs:
+    %% - Flowcharts represent linear, sequential processes, while graphs show relationships between nodes.
+    %% - Flowcharts usually include decision points (e.g., Yes/No), while graphs can have multiple bidirectional connections.
+    %% - Flowcharts are more structured and follow a strict flow, whereas graphs are used for more general network relationships.
