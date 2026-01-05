@@ -1,59 +1,72 @@
 erDiagram
+    %% CUSTOMER entity
     CUSTOMER {
-        string customerID
+        string customerID PK
         string name
         string address
         string email
         string phone
     }
-    
+
+    %% ORDER entity
     ORDER {
-        int orderID
+        int orderID PK
         date orderDate
         string status
         float totalAmount
+        string customerID FK
     }
-    
+
+    %% PRODUCT entity
     PRODUCT {
-        int productID
+        int productID PK
         string productName
         float price
         string category
     }
-    
+
+    %% EMPLOYEE entity
     EMPLOYEE {
-        string employeeID
+        string employeeID PK
         string firstName
         string lastName
         string position
     }
 
+    %% PAYMENT entity
     PAYMENT {
-        int paymentID
+        int paymentID PK
         date paymentDate
         float amount
         string paymentMethod
+        string orderID FK
     }
 
+    %% SHIPMENT entity
     SHIPMENT {
-        int shipmentID
+        int shipmentID PK
         date shipmentDate
         string carrier
         string trackingNumber
     }
 
+    %% SUPPLIER entity
     SUPPLIER {
-        int supplierID
+        int supplierID PK
         string supplierName
         string contactPerson
         string phone
     }
 
+    %% ORDER_ITEM entity
     ORDER_ITEM {
         int quantity
         float itemPrice
+        string orderID FK
+        string productID FK
     }
 
+    %% Relationships
     CUSTOMER ||--o| ORDER : places
     ORDER ||--|{ ORDER_ITEM : contains
     ORDER_ITEM ||--o| PRODUCT : references
@@ -64,3 +77,15 @@ erDiagram
     SHIPMENT ||--|{ SUPPLIER : contains
     PAYMENT ||--o| CUSTOMER : paidBy
     SUPPLIER ||--o| EMPLOYEE : managedBy
+
+    %% Relationship Descriptions:
+    %% "places" - A customer can place multiple orders. (One-to-many relationship)
+    %% "contains" - An order can contain multiple items. (One-to-many relationship)
+    %% "references" - Each order item references a single product. (Many-to-one relationship)
+    %% "has" - An order has one associated payment. (One-to-one relationship)
+    %% "shippedBy" - An order has one associated shipment. (One-to-one relationship)
+    %% "processes" - An employee can process multiple orders. (One-to-many relationship)
+    %% "suppliedBy" - A product is supplied by a single supplier. (Many-to-one relationship)
+    %% "contains" - A shipment may contain multiple products from the supplier. (One-to-many relationship)
+    %% "paidBy" - A payment is made by one customer. (One-to-one relationship)
+    %% "managedBy" - A supplier is managed by one employee. (One-to-one relationship)
