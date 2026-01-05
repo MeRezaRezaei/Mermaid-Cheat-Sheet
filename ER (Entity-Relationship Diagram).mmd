@@ -1,5 +1,4 @@
 erDiagram
-    %% Entities
     CUSTOMER {
         string customerID
         string name
@@ -30,35 +29,3 @@ erDiagram
     CUSTOMER ||--o| ORDER : "places"
     ORDER ||--|{ PRODUCT : "contains"
     ORDER ||--o| PAYMENT : "paid by"
-    
-    %% Example Instances
-    CUSTOMER {
-        "123" : customerID
-        "Ali" : name
-        "ali@email.com" : email
-        "Tehran" : address
-    }
-    
-    ORDER {
-        "789" : orderID
-        "2026-01-01" : orderDate
-        "Pending" : status
-    }
-    
-    PRODUCT {
-        "456" : productID
-        "Laptop" : name
-        "2000" : price
-    }
-
-    PAYMENT {
-        "321" : paymentID
-        "2000" : amount
-        "2026-01-02" : paymentDate
-        "Credit Card" : paymentMethod
-    }
-
-    %% Example Relationships
-    CUSTOMER ||--o| ORDER : "Ali places an order"
-    ORDER ||--|{ PRODUCT : "Order contains Laptop"
-    ORDER ||--o| PAYMENT : "Order paid by credit card"
