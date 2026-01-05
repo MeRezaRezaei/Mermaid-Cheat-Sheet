@@ -58,9 +58,24 @@ flowchart TB
     end
 
     %% =================================================================================
-    %% 4. STYLING
+    %% 4. LAYOUT & FORMATTING (Crucial Utilities)
     %% =================================================================================
-    subgraph Styling ["4. Styling Examples"]
+    subgraph Layout ["4. Layout & Text Tricks"]
+        direction TB
+        
+        %% Line Breaks
+        TEXT1["Line 1\nLine 2\nLine 3"]
+        
+        %% Invisible Links (Ghost Links)
+        %% Use ~~~ to force position without drawing a line
+        %% QUOTES ADDED below to fix the syntax error
+        POS1[Node A] ~~~ POS2["Node B (Forced Below A)"]
+    end
+
+    %% =================================================================================
+    %% 5. STYLING
+    %% =================================================================================
+    subgraph Styling ["5. Styling Examples"]
         direction TB
         S1[Inline Styled Node]
         style S1 fill:#f9f,stroke:#333,stroke-width:3px
@@ -72,9 +87,9 @@ flowchart TB
     end
 
     %% =================================================================================
-    %% 5. INTERACTION & EXTRAS
+    %% 6. INTERACTION & EXTRAS
     %% =================================================================================
-    subgraph Extras ["5. Interaction & Syntax"]
+    subgraph Extras ["6. Interaction & Syntax"]
         direction TB
         I1[Click Me - Tooltip]
         click I1 "https://mermaid.js.org" "Tooltip Text"
@@ -85,9 +100,9 @@ flowchart TB
     end
 
     %% =================================================================================
-    %% 6. SUBGRAPHS & NESTING
+    %% 7. SUBGRAPHS & NESTING
     %% =================================================================================
-    subgraph Grouping ["6. Subgraphs & Nesting"]
+    subgraph Grouping ["7. Subgraphs & Nesting"]
         direction TB
         %% Notice how we can nest graphs and change direction
         subgraph Outer [Outer Box]
@@ -101,10 +116,11 @@ flowchart TB
         end
     end
 
-    %% Column Layout Helpers
+    %% Column Layout Helpers (Using Invisible Links)
     Directions ~~~ Shapes
     Shapes ~~~ Links
-    Links ~~~ Styling
+    Links ~~~ Layout
+    Layout ~~~ Styling
     Styling ~~~ Extras
     Extras ~~~ Grouping
 
