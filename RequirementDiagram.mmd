@@ -1,0 +1,16 @@
+requirementDiagram
+    requirement PerformanceStd {
+        id: req1
+        text: "System shall meet certain performance standards"
+        risk: High
+        verifymethod: Test
+    }
+
+    requirement UserLogin {
+        id: req2
+        text: "User should be able to log in with credentials"
+        risk: Medium
+        verifymethod: Demonstration
+    }
+
+    PerformanceStd - traces -> UserLogin
