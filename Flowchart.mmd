@@ -1,98 +1,89 @@
-%%{init: {'flowchart': {'curve': 'basis'}}}%%
-flowchart LR
-    %% --- Section 1: New Syntax & Icons (GitHub Safe) ---
+%%{init: {'flowchart': {'curve': 'basis', 'htmlLabels': true}}}%%
+flowchart TB
+    %% --- Section 1: Rich Text & Icons (Markdown Support) ---
     
-    %% Node with FontAwesome icon
-    Admin@{ icon: "fa:user-secret", label: "**Super** Admin", pos: "b"}
-    
-    %% FIXED: Replaced external image with an internal icon for GitHub compatibility
-    Logo@{ icon: "fa:brands fa-github-alt", label: "System Logo", pos: "b" }
+    %% Node with Markdown string (Bold, Italic, Newline)
+    InfoNode["`**Markdown Node**
+    Supports _Italics_
+    and Multi-line text`"]
 
-    %% New shapes: Manual Input and Card
-    InputForm@{ shape: manual-input, label: "`User
-    **Credentials**`"}
-    
-    ProfileCard@{ shape: card, label: "User Profile" }
+    %% Node with FontAwesome Icon (GitHub Safe)
+    UserNode@{ icon: "fa:users", label: "User Group", pos: "b"}
 
-    %% Connections for Section 1
-    Admin -- Login --> InputForm
-    
-    %% Invisible link for layout adjustment
-    Logo ~~~ Admin
-
-    %% --- Section 2: Subgraphs & Direction ---
-    subgraph FrontEnd ["💻 Client Application"]
-        direction TB
-        InputForm
-        ProfileCard
-        
-        %% Node shaped as a Document
-        Docs@{ shape: docs, label: "Verification Docs" }
-        
-        InputForm -. Upload .-> Docs
-    end
-
-    %% --- Section 3: Animation & Advanced Edges ---
-    
-    %% Cloud shape
-    Internet@{ shape: cloud, label: "Public Network" }
-    
-    %% Animated Edge
-    FrontEnd edge1@==> Internet
-    edge1@{ animate: true, animation: fast }
-
-    %% --- Section 4: Logic & Special Arrows ---
-    subgraph BackEnd ["⚙️ Server Cluster"]
+    %% --- Section 2: The New Shape Syntax (v11.3+) ---
+    subgraph Shapes ["✨ New Semantic Shapes"]
         direction LR
         
-        %% Rhombus shape for condition
-        Gateway{API Gateway}
+        %% Infrastructure Shapes
+        Cloud@{ shape: cloud, label: "AWS Cloud" }
+        DB@{ shape: cyl, label: "Database" }
         
-        %% Stacked Process shape
-        Processor@{ shape: procs, label: "Data Processor" }
+        %% Logic Shapes
+        Event@{ shape: bolt, label: "Trigger" }
+        Delay@{ shape: delay, label: "Wait 5s" }
         
-        %% Circle and Cross edge endings
-        Internet --o Gateway
-        Gateway -- Valid --> Processor
-        Gateway --x ErrorHandler(Block Request)
+        %% Document Shapes
+        Report@{ shape: docs, label: "Multi-Docs" }
+        Note@{ shape: brace-r, label: "Annotation" }
+
+        %% Connections
+        Cloud --> Event --> Delay
+        Event -.- Note
     end
 
-    %% --- Section 5: Storage & Styling ---
+    %% --- Section 3: Advanced Edges, Chaining & Animation ---
+    subgraph Connections ["🔗 Advanced Linking"]
+        direction TB
+        
+        Step1[Start]
+        Step2(Process)
+        Step3{Decision}
+        
+        %% 1. Multi-Node Chaining (Connecting 1 to 2 & 3 simultaneously)
+        Step1 -- Action --> Step2 & Step3
+        
+        %% 2. Extended Link Length (Manual adjustment with ----)
+        Step2 ---->|Long Link| EndNode(((End)))
+        
+        %% 3. Special Arrow Heads (Circle & Cross)
+        Step3 o--o CircleEdge[Circle]
+        Step3 x--x CrossEdge[Cross]
+
+        %% 4. Animated Edge (The "Running Ants" effect)
+        CrossEdge edgeAnim@==> Step1
+        edgeAnim@{ animate: true, animation: slow, label: "Loop Back" }
+    end
+
+    %% --- Section 4: Nested Layouts & Invisible Links ---
+    subgraph Layout ["📐 Layout & Subgraphs"]
+        direction LR
+        
+        %% Nested Subgraph with Reverse Direction (Bottom-to-Top)
+        subgraph Inner ["Reverse Logic (BT)"]
+            direction BT
+            ItemBottom --> ItemTop
+        end
+        
+        %% Invisible Link (~~~) for manual spacing
+        Inner ~~~ FloatingNode{{Isolated Hex}}
+    end
+
+    %% --- Section 5: Interaction & Global Styling ---
     
-    %% New storage shapes
-    DB_Main@{ shape: cyl, label: "Main SQL" }
-    DB_Backup@{ shape: lin-cyl, label: "Cold Storage" }
-
-    Processor -- Store --> DB_Main
-    DB_Main -. Replication .-> DB_Backup
-
-    %% --- Section 6: Interaction & CSS Classes ---
+    %% Connect the main sections
+    UserNode ==> Cloud
+    Report -.-> Step1
     
-    %% Clickable Node (Opens URL - usually works on GitHub)
-    click Admin "https://github.com" "View Admin Profile"
+    %% Interaction: Click to open URL
+    click UserNode "https://github.com" "Open GitHub"
 
-    %% Define CSS classes
-    classDef urgent fill:#f96,stroke:#333,stroke-width:2px,color:white;
-    classDef storage fill:#bbf,stroke:#333,stroke-dasharray: 5 5;
+    %% Styling: Define CSS Classes
+    classDef crucial fill:#f96,stroke:#333,stroke-width:2px,color:white;
+    classDef ghost fill:none,stroke:#999,stroke-dasharray: 5 5;
 
-    %% Apply classes
-    class ErrorHandler urgent;
-    class DB_Main,DB_Backup storage;
+    %% Apply Classes
+    class Event,Step3 crucial;
+    class Note,FloatingNode ghost;
 
-    %% Style specific link
-    linkStyle 0 stroke:green,stroke-width:2px;
-
-
-    %% Explanation of the flowchart:
-    %% 1. The flowchart direction is 'TD' (Top Down).
-    %% 2. Nodes represent specific steps in a process (e.g., Start, Do something, Finish).
-    %% 3. The diamond shape (C) represents a decision point with two possible outcomes: 'Yes' and 'No'.
-    %% 4. The edges ('-->' and '|Label|') indicate the flow between steps and conditions in the process.
-    %% 5. Flowcharts are ideal for representing linear or branching processes with clear decision points.
-    %% 6. The flowchart has a clear direction and defines steps in a specific sequence.
-    %% 7. Unlike graphs, flowcharts are designed for step-by-step process visualization and decision-making.
-
-    %% Key differences with graphs:
-    %% - Flowcharts represent linear, sequential processes, while graphs show relationships between nodes.
-    %% - Flowcharts usually include decision points (e.g., Yes/No), while graphs can have multiple bidirectional connections.
-    %% - Flowcharts are more structured and follow a strict flow, whereas graphs are used for more general network relationships.
+    %% Style a specific link by index (0, 1, 2...)
+    linkStyle 0 stroke:blue,stroke-width:2px;
